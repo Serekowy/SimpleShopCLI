@@ -3,6 +3,8 @@ package service.impl;
 import model.User;
 import service.UserManagementService;
 
+import java.util.Arrays;
+
 public class DefaultUserManagementService implements UserManagementService {
 
     private static final String NOT_UNIQUE_EMAIL_ERROR_MESSAGE = "This email is already used by another user. Please, use another email";
@@ -13,15 +15,35 @@ public class DefaultUserManagementService implements UserManagementService {
 
     private static DefaultUserManagementService instance;
 
-    // <write your code here>
+    private User[] users;
 
     private DefaultUserManagementService() {
     }
 
+    {
+        users = new User[DEFAULT_USERS_CAPACITY];
+    }
+
     @Override
     public String registerUser(User user) {
-        // <write your code here>
-        return null;
+
+        if (user == null) return NO_ERROR_MESSAGE;
+
+        if (user.getEmail().isEmpty()) {
+            return EMPTY_EMAIL_ERROR_MESSAGE;
+        } else if (getUserByEmail(user.getEmail()) != null) {
+            return NOT_UNIQUE_EMAIL_ERROR_MESSAGE;
+        } else {
+            int userIndex = user.getId();
+
+            if(users.length <= userIndex) {
+                users = Arrays.copyOf(users, userIndex << 1);
+            }
+
+            users[userIndex] = user;
+            return NO_ERROR_MESSAGE;
+        }
+
     }
 
     public static UserManagementService getInstance() {
@@ -31,20 +53,22 @@ public class DefaultUserManagementService implements UserManagementService {
         return instance;
     }
 
-
     @Override
     public User[] getUsers() {
-        // <write your code here>
-        return null;
+        return users;
     }
 
     @Override
     public User getUserByEmail(String userEmail) {
-        // <write your code here>
+        for (User user : users) {
+            if (user != null && userEmail.equalsIgnoreCase(user.getEmail())) {
+                return user;
+            }
+        }
         return null;
     }
 
     void clearServiceState() {
-        // <write your code here>
+        users = new User[DEFAULT_USERS_CAPACITY];
     }
 }
