@@ -31,7 +31,6 @@ public class MainMenu implements Menu {
     public void start() {
         if (context == null) context.setMainMenu(this);
 
-        boolean running = true;
         Menu choosenMenu = null;
         Scanner scanner = new Scanner(System.in);
 
