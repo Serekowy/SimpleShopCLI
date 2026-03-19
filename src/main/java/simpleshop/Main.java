@@ -1,3 +1,5 @@
+package simpleshop;
+
 import ui.Menu;
 import ui.impl.MainMenu;
 
