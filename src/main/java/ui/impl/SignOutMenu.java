@@ -13,12 +13,16 @@ public class SignOutMenu implements Menu {
 
     @Override
     public void start() {
-        // <write your code here>
+        if (context.getLoggedInUser() == null) System.out.println("You have not logged in!");
+        else {
+            context.setLoggedInUser(null);
+            System.out.println("Successfully logged out!");
+        }
     }
 
     @Override
     public void printMenuHeader() {
-        // <write your code here>
+        System.out.println("---SIGN-OUT---");
     }
 
 
