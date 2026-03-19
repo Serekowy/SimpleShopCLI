@@ -1,5 +1,6 @@
 package ui.impl;
 
+import simpleshop.Main;
 import config.ApplicationContext;
 import ui.Menu;
 
@@ -38,7 +39,7 @@ public class MainMenu implements Menu {
 
             printMenuHeader();
             String userInput = scanner.nextLine();
-            if (MENU_COMMAND.equalsIgnoreCase(userInput)) break;
+            if (Main.EXIT_COMMAND.equalsIgnoreCase(userInput)) break;
 
             switch (userInput) {
                 case "1":
@@ -61,7 +62,7 @@ public class MainMenu implements Menu {
                     choosenMenu = new CustomerListMenu();
                     break;
                 default:
-                    System.out.println("Invalid input, choose option 1-5. Please try again.");
+                    System.out.println("Invalid input, choose option 1-6. Please try again.");
                     continue;
             }
             choosenMenu.start();
