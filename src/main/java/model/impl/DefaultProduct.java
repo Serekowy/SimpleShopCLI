@@ -13,13 +13,15 @@ public class DefaultProduct implements Product {
     }
 
     public DefaultProduct(int id, String productName, String categoryName, double price) {
-        // <write your code here>
+        this.id = id;
+        this.productName = productName;
+        this.categoryName = categoryName;
+        this.price = price;
     }
 
     @Override
     public String toString() {
-        // <write your code here>
-        return null;
+        return "Id: " + id + ", Product Name: " + productName + ", Category: " + categoryName + ", Price: " + price;
     }
 
     @Override
