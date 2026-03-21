@@ -3,6 +3,8 @@ package model.impl;
 import model.Order;
 import model.Product;
 
+import java.util.Arrays;
+
 public class DefaultOrder implements Order {
 
     private static final int AMOUNT_OF_DIGITS_IN_CREDIT_CARD_NUMBER = 16;
@@ -13,25 +15,23 @@ public class DefaultOrder implements Order {
 
     @Override
     public boolean isCreditCardNumberValid(String creditCardNumber) {
-        // <write your code here>
-        return false;
+        return creditCardNumber.length() == AMOUNT_OF_DIGITS_IN_CREDIT_CARD_NUMBER;
     }
 
     @Override
     public void setCreditCardNumber(String creditCardNumber) {
-        // <write your code here>
+        this.creditCardNumber = creditCardNumber;
     }
 
     @Override
     public void setProducts(Product[] products) {
-        // <write your code here>
+        this.products = products;
     }
 
     @Override
     public void setCustomerId(int customerId) {
-        // <write your code here>
+        this.customerId = customerId;
     }
-
 
     @Override
     public int getCustomerId() {
@@ -40,8 +40,7 @@ public class DefaultOrder implements Order {
 
     @Override
     public String toString() {
-        // <write your code here>
-        return null;
+        return "User ID: " + getCustomerId() + " Credit card number: " + creditCardNumber + " Products: " + Arrays.toString(products);
     }
 
 }
