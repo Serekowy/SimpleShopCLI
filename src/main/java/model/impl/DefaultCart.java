@@ -28,8 +28,7 @@ public class DefaultCart implements Cart {
             products = Arrays.copyOf(products, AMOUNT_OF_PRODUCTS << 1);
         }
 
-        nextIndex += 1;
-        products[nextIndex] = product;
+        products[nextIndex++] = product;
 
     }
 
