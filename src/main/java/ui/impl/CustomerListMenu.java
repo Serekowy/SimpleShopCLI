@@ -1,6 +1,7 @@
 package ui.impl;
 
 import config.ApplicationContext;
+import model.User;
 import service.UserManagementService;
 import service.impl.DefaultUserManagementService;
 import ui.Menu;
@@ -16,11 +17,23 @@ public class CustomerListMenu implements Menu {
 
     @Override
     public void start() {
-        // <write your code here>
+
+        User users[] = userManagementService.getUsers();
+
+        if (users[1] == null) {
+            System.out.println("No users found");
+        }
+
+        for (User user : users) {
+            if (user != null) {
+                System.out.println(user.toString());
+            }
+        }
+
     }
 
     @Override
     public void printMenuHeader() {
-        // <write your code here>
+        System.out.println("---CUSTOMERS---");
     }
 }
