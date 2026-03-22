@@ -47,7 +47,7 @@ public class DefaultUser implements User {
 
     @Override
     public String toString() {
-       return "FirstName=" + getFirstName() + ", LastName=" + ", Email=" + getEmail();
+       return "FirstName=" + getFirstName() + ", LastName=" + getLastName() + ", Email=" + getEmail();
     }
 
     @Override
