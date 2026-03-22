@@ -1,10 +1,14 @@
 package ui.impl;
 
 import config.ApplicationContext;
+import model.User;
 import ui.Menu;
+
+import java.util.Scanner;
 
 public class ChangeEmailMenu implements Menu {
 
+    Scanner scanner = new Scanner(System.in);
     private ApplicationContext context;
 
     {
@@ -13,12 +17,19 @@ public class ChangeEmailMenu implements Menu {
 
     @Override
     public void start() {
-        // <write your code here>
+        printMenuHeader();
+
+        User user = context.getLoggedInUser();
+        String newEmail = scanner.nextLine();
+
+        user.setEmail(newEmail);
+        System.out.println("Email successfully changed!");
     }
 
     @Override
     public void printMenuHeader() {
-        // <write your code here>
+        System.out.println("---CHANGE-EMAIL---");
+        System.out.print("Enter new email: ");
     }
 
 
