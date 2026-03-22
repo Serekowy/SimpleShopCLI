@@ -19,10 +19,14 @@ public class SettingsMenu implements Menu {
     @Override
     public void start() {
         if (context.getLoggedInUser() != null) {
-            Menu choosenMenu;
+            Menu choosenMenu = new MainMenu();
 
             printMenuHeader();
             String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase(MainMenu.MENU_COMMAND)) {
+                choosenMenu.start();
+            }
 
             switch (input) {
                 case "1": {
