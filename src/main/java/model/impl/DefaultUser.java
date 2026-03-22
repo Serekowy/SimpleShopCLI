@@ -12,6 +12,9 @@ public class DefaultUser implements User {
     private static int userCounter = 0;
 
     public DefaultUser() {
+    }
+
+    {
         id = ++userCounter;
     }
 
